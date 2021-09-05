@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Filter from './Filter';
+import TodoItem from './TodoItem';
 import useTodoList from '../../hooks/useTodoList';
 
 import styles from './index.scss';
@@ -21,6 +22,16 @@ const TodoList = () => {
           filterIsDoneTodo={todoList.filterIsDoneTodo}
           switchFilterIsDoneTodo={todoList.switchFilterIsDoneTodo}
         />
+        <div>
+          {todoList.todoList.map((todo) => (
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              switchTodoIsDoneStatus={todoList.switchTodoIsDoneStatus}
+              deleteTodo={todoList.deleteTodo}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
