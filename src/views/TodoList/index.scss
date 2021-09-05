@@ -1,4 +1,6 @@
 $margin: 24px;
+$fontInputSize: 16px;
+$formElementHeight: 50px;
 
 .layout {
   display: flex;
@@ -34,4 +36,20 @@ $margin: 24px;
   display: flex;
   justify-content: flex-end;
   margin: 0px $margin;
+}
+
+.form {
+  margin: $margin;
+
+  .todoInput {
+    width: 272px;
+    height: $formElementHeight;
+    font-size: $fontInputSize;
+  }
+
+  .submitButton {
+    width: 72px;
+    height: $formElementHeight;
+    font-size: $fontInputSize;
+  }
 }

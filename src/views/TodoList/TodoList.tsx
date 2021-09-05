@@ -2,6 +2,7 @@ import React from 'react';
 
 import Filter from './Filter';
 import TodoItem from './TodoItem';
+import Form from './Form';
 import useTodoList from '../../hooks/useTodoList';
 
 import styles from './index.scss';
@@ -32,6 +33,7 @@ const TodoList = () => {
             />
           ))}
         </div>
+        <Form addTodo={todoList.addTodo} />
       </div>
     </div>
   );
