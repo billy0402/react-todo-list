@@ -1,8 +1,13 @@
 import React from 'react';
 
+import Filter from './Filter';
+import useTodoList from '../../hooks/useTodoList';
+
 import styles from './index.scss';
 
 const TodoList = () => {
+  const todoList = useTodoList();
+
   return (
     <div className={styles.layout}>
       <div className={styles.todoListWrapper}>
@@ -12,6 +17,10 @@ const TodoList = () => {
             Hi here is a sample todo list.
           </span>
         </div>
+        <Filter
+          filterIsDoneTodo={todoList.filterIsDoneTodo}
+          switchFilterIsDoneTodo={todoList.switchFilterIsDoneTodo}
+        />
       </div>
     </div>
   );
