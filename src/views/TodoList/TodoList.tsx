@@ -1,14 +1,22 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Filter from './Filter';
 import TodoItem from './TodoItem';
 import Form from './Form';
-import useTodoList from '../../hooks/useTodoList';
+import { rootState } from '../../store';
+import {
+  addTodo,
+  deleteTodo,
+  switchFilterIsDoneTodo,
+  switchTodoIsDoneStatus,
+} from '../../actions/todo';
 
 import styles from './index.scss';
 
 const TodoList = () => {
-  const todoList = useTodoList();
+  const todoList = useSelector((state: rootState) => state.displayTodoList);
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.layout}>
@@ -20,20 +28,30 @@ const TodoList = () => {
           </span>
         </div>
         <Filter
-          filterIsDoneTodo={todoList.filterIsDoneTodo}
-          switchFilterIsDoneTodo={todoList.switchFilterIsDoneTodo}
+          filterIsDoneTodo={useSelector(
+            (state: rootState) => state.filterIsDoneTodo,
+          )}
+          switchFilterIsDoneTodo={() => dispatch(switchFilterIsDoneTodo())}
         />
         <div className={styles.todoList}>
-          {todoList.todoList.map((todo) => (
+          {todoList.map((todo) => (
             <TodoItem
               key={todo.id}
               todo={todo}
-              switchTodoIsDoneStatus={todoList.switchTodoIsDoneStatus}
-              deleteTodo={todoList.deleteTodo}
+              switchTodoIsDoneStatus={(id) => {
+                dispatch(switchTodoIsDoneStatus(id));
+              }}
+              deleteTodo={(id) => {
+                dispatch(deleteTodo(id));
+              }}
             />
           ))}
         </div>
-        <Form addTodo={todoList.addTodo} />
+        <Form
+          addTodo={(id) => {
+            dispatch(addTodo(id));
+          }}
+        />
       </div>
     </div>
   );
