@@ -6,4 +6,6 @@ export const submitButton: string;
 export const subTitle: string;
 export const title: string;
 export const todoInput: string;
+export const todoItem: string;
+export const todoList: string;
 export const todoListWrapper: string;

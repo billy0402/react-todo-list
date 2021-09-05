@@ -38,6 +38,22 @@ $formElementHeight: 50px;
   margin: 0px $margin;
 }
 
+.todoList {
+  overflow: scroll;
+  height: 300px;
+
+  .todoItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 4px 0px;
+    padding: 0px 24px;
+    height: 50px;
+    background: #c9c9c9;
+    color: #ffffff;
+  }
+}
+
 .form {
   margin: $margin;
 

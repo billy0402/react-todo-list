@@ -23,7 +23,7 @@ const TodoList = () => {
           filterIsDoneTodo={todoList.filterIsDoneTodo}
           switchFilterIsDoneTodo={todoList.switchFilterIsDoneTodo}
         />
-        <div>
+        <div className={styles.todoList}>
           {todoList.todoList.map((todo) => (
             <TodoItem
               key={todo.id}

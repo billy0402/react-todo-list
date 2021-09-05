@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Todo } from '../../types/todoList';
 
+import styles from './index.scss';
+
 type TodoProps = {
   todo: Todo;
   switchTodoIsDoneStatus: (id: number) => void;
@@ -10,8 +12,12 @@ type TodoProps = {
 
 const TodoItem = (props: TodoProps) => {
   return (
-    <div>
-      <span>{props.todo.content}</span>
+    <div className={styles.todoItem}>
+      <span
+        style={{ textDecoration: props.todo.isDone ? 'line-through' : 'none' }}
+      >
+        {props.todo.content}
+      </span>
       <input
         type='checkbox'
         checked={props.todo.isDone}
