@@ -1,0 +1,13 @@
+.layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  .todo {
+    padding: 12px;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #000000;
+  }
+}

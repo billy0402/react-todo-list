@@ -5,12 +5,18 @@ interface TodoState {
   todoList: Todo[];
   displayTodoList: Todo[];
   filterIsDoneTodo: boolean;
+  todo: Todo;
 }
 
 const initialState: TodoState = {
   todoList: [],
   displayTodoList: [],
   filterIsDoneTodo: false,
+  todo: {
+    id: 0,
+    content: '無此資料',
+    isDone: false,
+  },
 };
 
 const filterDisplayTodoList = (filterIsDoneTodo: boolean, todoList: Todo[]) => {
@@ -72,6 +78,15 @@ const todo = (state = initialState, action: TodoActionTypes): TodoState => {
           ...state.todoList,
         ]),
       };
+    case 'GET_TODO_BY_ID': {
+      const todo: Todo =
+        state.todoList.find((todo: Todo) => todo.id === action.payload) ||
+        initialState.todo;
+      return {
+        ...state,
+        todo,
+      };
+    }
     default:
       return state;
   }
